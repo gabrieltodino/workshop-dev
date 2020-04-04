@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>ideas - casa criativa</title>
+
+                <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700,900&display=swap" rel="stylesheet">
+        <link href="style.css" type="text/css" rel="stylesheet" />
+    </head>
+
+    <body id="page-ideas">
+        
+        <div id="column1">
+            <header>
+                <a href="/">
+                    <img src="imgs/logo.png" alt="logo site" width="299" height="64"/>
+                </a>
+    
+                <nav>
+                    <li><a href="/">inicio </a></li>
+                    <li><a href="#" onclick="onOff()" class="btn">nova ideia</a></li>
+                </nav>
+            </header>
+     
+            <section id="title">
+                <p>em exibicao</p>
+                <h1>ideias</h1>
+            </section>
+    
+            <main>
+                <section id="ideas">
+    
+                        {% for idea in ideas %}
+                            <div class="idea">
+                                <img src="{{idea.image}}" alt="idea icon {{idea.title}}"/>
+                                
+                                <div class="content">
+                                    <h3>{{idea.title}}</h3>
+                                    <p>{{idea.category}}</p>
+                                    <div class="description">
+                                        {{idea.description}}
+                                    </div>
+                                    <a href="{{idea.link}}">Ir para ideia</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+    
+                </section>
+            </main>
+    
+            <footer>
+                <p id="footer">developed by: Gabriel Todino</p>
+            </footer>
+        </div>
+
+        <div id="modal" class="hide">
+            <div class="content">
+                <h1>Nova ideia</h1>
+
+                <form action="/" method="POST" onsubmit="return checkFields(event)">
+
+                    <div class="input-wrapper">
+                        <label for="title">titulo da idea</label>
+                        <input type="text" name="title">
+                    </div>
+
+                    <div class="input-wrapper">                    
+                        <label for="category">categoria</label>
+                        <input type="text" name="category">
+                    </div>
+
+                    <div class="input-wrapper">
+
+                        <label for="image">link da imagem</label>
+                        <input type="url" name="image">
+                    </div>
+
+                    <div class="input-wrapper">    
+                        <label for="description">digite uma descricao para sua ideia</label>
+                        <textarea name="description" cols="30" rows="10"></textarea>
+                    </div>
+
+                    <div class="input-wrapper">                    
+                        <label for="link">link da ideia</label>
+                        <input type="url" name="link">
+                    </div>
+
+                     <a href="#" onclick="onOff()">voltar</a>
+                     <button>Salvar</button>
+
+                </form>
+            </div>
+        </div>
+
+        <script src="main.js"></script>
+    </body>
+
+</html>
